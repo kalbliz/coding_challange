@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 import 'package:coding_challange/infrastructure/navigation/routes.dart';
 import 'package:coding_challange/infrastructure/theme/app_colors.dart';
-import 'package:coding_challange/infrastructure/theme/textstyle.dart';
+import 'package:coding_challange/infrastructure/helpers/textstyle.dart';
 
 import 'controllers/home.controller.dart';
 

@@ -1,4 +1,4 @@
-import 'package:coding_challange/infrastructure/theme/app_assets.dart';
+import 'package:coding_challange/infrastructure/helpers/app_assets.dart';
 import 'package:coding_challange/presentation/home/home.screen.dart';
 import 'package:get/get.dart';
 

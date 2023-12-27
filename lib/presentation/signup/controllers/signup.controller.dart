@@ -1,5 +1,5 @@
 import 'package:coding_challange/infrastructure/navigation/routes.dart';
-import 'package:coding_challange/infrastructure/theme/textfield_validator.dart';
+import 'package:coding_challange/infrastructure/helpers/textfield_validator.dart';
 import 'package:coding_challange/presentation/home/controllers/home.controller.dart';
 import 'package:coding_challange/presentation/screens.dart';
 import 'package:flutter/material.dart';
