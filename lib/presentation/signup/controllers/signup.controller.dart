@@ -49,20 +49,23 @@ class SignUpController extends GetxController {
         businessAmount: businessAmountController.value.text,
         businessCategory: businessCategoryController.value.text));
     Get.find<HomeController>().update();
-    Get.off(() => const HomeScreen());
+    for (int i = 3; i > 0; i--) {
+      Get.back();
+    }
+    // Get.off(() => const HomeScreen());
   }
 
   @override
   void dispose() {
-    businessNameController.dispose();
-    businessEmailController.dispose();
-    businessPhoneNumberController.dispose();
-    businessAddressController.dispose();
-    businessLogoController.dispose();
-    businessCategoryController.dispose();
-    businessAmountController.dispose();
-    businessInfoFormKey.currentState!.dispose();
-    businessBrandFormKey.currentState!.dispose();
+    businessNameController.clear();
+    businessEmailController.clear();
+    businessPhoneNumberController.clear();
+    businessAddressController.clear();
+    businessLogoController.clear();
+    businessCategoryController.clear();
+    businessAmountController.clear();
+    businessInfoFormKey.currentState!.reset();
+    businessBrandFormKey.currentState!.reset();
     super.dispose();
   }
 }
