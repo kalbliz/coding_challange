@@ -25,9 +25,4 @@ Other packages used are:
 
 
 
-```bash
-# Example setup instructions (modify based on your project)
-1. Clone the repository: `git clone https://github.com/your-username/your-project.git`
-2. Navigate to the project directory: `cd your-project`
-3. Install dependencies: `flutter pub get`
-4. Run the project: `flutter run`
+
