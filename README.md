@@ -23,6 +23,6 @@ Other packages used are:
 -flutter_svg
 -google_fonts
 
-
+The APK file for this project has been uploaded as part of the project files. You can find it in the base file above the pubspec.yaml file
 
 
