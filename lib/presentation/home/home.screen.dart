@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
-import 'package:coding_challange/infrastructure/navigation/bindings/controllers/signup.controller.binding.dart';
-import 'package:coding_challange/presentation/screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -90,10 +88,6 @@ class HomeScreen extends GetView<HomeController> {
                             : null,
                 trailing: IconButton(
                   onPressed: () {
-                    controller.availableCompanies.forEach((element) {
-                      debugPrint(element.businessLogo);
-                    });
-
                     showModalBottomSheet(
                         isScrollControlled: true,
                         context: context,
@@ -278,33 +272,32 @@ class HomeScreen extends GetView<HomeController> {
                                         ),
                                         Align(
                                           alignment: Alignment.bottomCenter,
-                                          child: ListTile(
-                                            onTap: () {
-                                              Get.to(
-                                                  () =>
-                                                      const BusinessInformationScreen(),
-                                                  binding:
-                                                      SignUpControllerBinding());
-                                              //  Get.toNamed(Routes.BUSINESSINFO);
-                                            },
-                                            tileColor: AppColors.appWhite,
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    vertical: 10),
-                                            leading: CircleAvatar(
-                                                radius: 22,
-                                                backgroundColor:
-                                                    AppColors.appBlack,
-                                                child: Center(
-                                                  child: Text(
-                                                    '+',
-                                                    style: AppTextStyle
-                                                        .nineteen700White(),
-                                                  ),
-                                                )),
-                                            title: Text('Add Account',
-                                                style: AppTextStyle
-                                                    .nineteen700Black()),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(top:10),
+                                            child: ListTile(
+                                              onTap: () {
+                                              
+                                                  Get.toNamed(Routes.BUSINESSINFO);
+                                              },
+                                              tileColor: AppColors.appWhite,
+                                              contentPadding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5),
+                                              leading: CircleAvatar(
+                                                  radius: 22,
+                                                  backgroundColor:
+                                                      AppColors.appBlack,
+                                                  child: Center(
+                                                    child: Text(
+                                                      '+',
+                                                      style: AppTextStyle
+                                                          .nineteen700White(),
+                                                    ),
+                                                  )),
+                                              title: Text('Add Account',
+                                                  style: AppTextStyle
+                                                      .nineteen700Black()),
+                                            ),
                                           ),
                                         ),
                                       ],

@@ -1,6 +1,5 @@
 // ignore_for_file: invalid_use_of_protected_member
 
-import 'package:coding_challange/infrastructure/navigation/routes.dart';
 import 'package:coding_challange/infrastructure/helpers/textfield_validator.dart';
 import 'package:coding_challange/presentation/home/controllers/home.controller.dart';
 import 'package:coding_challange/presentation/screens.dart';
@@ -52,7 +51,7 @@ class SignUpController extends GetxController {
     for (int i = 3; i > 0; i--) {
       Get.back();
     }
-    // Get.off(() => const HomeScreen());
+    
   }
 
   @override
