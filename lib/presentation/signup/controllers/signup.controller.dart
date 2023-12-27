@@ -25,9 +25,14 @@ class SignUpController extends GetxController {
   ]);
   final businessPhoneNumberValidator =
       RequiredValidator(errorText: 'Field is required');
+        final businessAmountNumberValidator =
+      RequiredValidator(errorText: 'Field is required');
+        final businessCategoryNumberValidator =
+      RequiredValidator(errorText: 'Field is required');
   final businessAddressValidator =
       RequiredValidator(errorText: 'Field is required');
   RxBool isButtonActive = false.obs;
+    RxBool isBrandButtonActive = false.obs;
   RxInt activePage = 0.obs;
   final GlobalKey<FormState> businessInfoFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> businessBrandFormKey = GlobalKey<FormState>();

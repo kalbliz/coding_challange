@@ -87,23 +87,24 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                   Form(
                       key: controller.businessBrandFormKey,
                       onChanged: () {
-                        controller.isButtonActive.value = controller
+                        controller.isBrandButtonActive.value = controller
                             .businessBrandFormKey.currentState!
                             .validate();
                         controller.update();
                       },
                       child: Column(
                         children: [
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
+                              debugPrint('here');
                               AppUtils.getImage().then((value) {
                                 controller.imagePath = value;
-                                controller.businessLogoController.value = value;
+                                controller.businessLogoController.text = value;
                               });
                             },
                             child: AppAuthInput(
                               hintText: 'Upload your logo',
-                              readOnly: true,
+                              enabled: false,
                               controller: controller.businessLogoController,
                               validator: controller.businessNameValidator,
                               keyboard: KeyboardType.text,
@@ -124,7 +125,8 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                           AppAuthInput(
                             hintText: 'Business Category',
                             controller: controller.businessCategoryController,
-                            validator: controller.businessEmailValidator,
+                            validator:
+                                controller.businessCategoryNumberValidator,
                             keyboard: KeyboardType.text,
                             suffix: Padding(
                               padding: const EdgeInsets.only(right: 22),
@@ -142,7 +144,7 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                           AppAuthInput(
                             hintText: ' NGN - Nigerian Naira (₦)',
                             controller: controller.businessAmountController,
-                            validator: controller.businessPhoneNumberValidator,
+                            validator: controller.businessAmountNumberValidator,
                             keyboard: KeyboardType.number,
                             suffix: Padding(
                               padding: const EdgeInsets.only(right: 22),
@@ -168,11 +170,14 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                 color: AppColors.appWhite,
                 child: GetBuilder<SignUpController>(builder: (controller) {
                   return AppAuthButton(
-                    isActive: controller.isButtonActive.value,
+                    isActive: controller.isBrandButtonActive.value,
                     buttonText: 'Create Your Invoice',
                     textColor: AppColors.appWhite,
                     onPressed: () {
-                      controller.addBusiness();
+                      if (controller.businessBrandFormKey.currentState!
+                          .validate()) {
+                        controller.addBusiness();
+                      }
                     },
                   );
                 }),

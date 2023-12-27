@@ -39,7 +39,7 @@ class HomeController extends GetxController {
         businessEmail: 'example@gmail.com',
         businessPhoneNumber: '08133993323',
         businessAddress: 'No. 7 Victoria island, off Ikoyi....',
-        businessLogo: AppAssets.businessOneIcon)
+        businessLogo: AppAssets.businessLogo)
   ];
   @override
   void onInit() {

@@ -37,200 +37,290 @@ class HomeScreen extends GetView<HomeController> {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            ListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 18, horizontal: 19),
-              tileColor: AppColors.appBlack,
-              title: Text(
-                  controller.availableCompanies
-                      .elementAt(controller.activeProfile.value)
-                      .companyName,
-                  style: AppTextStyle.nineteen700White()),
-              subtitle: Text('Switch business',
-                  style: AppTextStyle.thirteen400WhiteDeco()),
-              leading: CircleAvatar(
-                radius: 30,
-                backgroundColor: AppColors.appWhite,
-                child: Center(
-                  child: Text(
-                    'JS',
-                    style: AppTextStyle.nineteen700Black(),
-                  ),
-                ),
-              ),
-              trailing: IconButton(
-                onPressed: () {
-                  Get.bottomSheet(
-                      GetBuilder<HomeController>(builder: (controller) {
-                    return Container(
-                      padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-                      width: Get.width,
-                      height: Get.height * 250 / 667,
-                      decoration: const BoxDecoration(
-                          color: AppColors.appWhite,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30))),
-                      child: Stack(
-                        children: [
-                          Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    'Switch business',
-                                    style: AppTextStyle.eighteen700Black(),
-                                  ),
-                                  SizedBox(
-                                    width: Get.width * 100 / 375,
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        Get.back();
-                                      },
-                                      icon: const Icon(Icons.close,
-                                          color: AppColors.appBlack))
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              ListView.separated(
-                                  shrinkWrap: true,
-                                  physics: const BouncingScrollPhysics(),
-                                  itemCount:
-                                      controller.availableCompanies.length,
-                                  separatorBuilder: (context, index) {
-                                    return const SizedBox(
-                                      height: 12,
-                                    );
-                                  },
-                                  itemBuilder: (context, index) {
-                                    return Column(
+            GetBuilder<HomeController>(builder: (controller) {
+              return ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 18, horizontal: 19),
+                tileColor: AppColors.appBlack,
+                title: Text(
+                    controller.availableCompanies
+                        .elementAt(controller.activeProfile.value)
+                        .companyName,
+                    style: AppTextStyle.nineteen700White()),
+                subtitle: Text('Switch business',
+                    style: AppTextStyle.thirteen400WhiteDeco()),
+                leading: controller.activeProfile.value == 0
+                    ? CircleAvatar(
+                        radius: 26,
+                        backgroundColor: AppColors.appWhite,
+                        child: Center(
+                          child: Text(
+                            'JS',
+                            style: AppTextStyle.nineteen700Black(),
+                          ),
+                        ))
+                    : controller.activeProfile.value == 1
+                        ? CircleAvatar(
+                            radius: 26,
+                            backgroundColor: AppColors.appTextGrey,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(50),
+                              child: Image.asset(
+                                  fit: BoxFit.contain,
+                                  controller.availableCompanies
+                                      .elementAt(controller.activeProfile.value)
+                                      .businessLogo!),
+                            ))
+                        : controller.availableCompanies
+                                    .elementAt(controller.activeProfile.value)
+                                    .businessLogo !=
+                                null
+                            ? CircleAvatar(
+                                radius: 26,
+                                backgroundColor: AppColors.appBlack,
+                                child: ClipRRect(
+                                  clipBehavior: Clip.hardEdge,
+                                  borderRadius: BorderRadius.circular(50),
+                                  child: Image.file(File(controller
+                                      .availableCompanies
+                                      .elementAt(controller.activeProfile.value)
+                                      .businessLogo!)),
+                                ))
+                            : null,
+                trailing: IconButton(
+                  onPressed: () {
+                    controller.availableCompanies.forEach((element) {
+                      debugPrint(element.businessLogo);
+                    });
+
+                    showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (_) {
+                          return GetBuilder<HomeController>(
+                              builder: (controller) {
+                            return DraggableScrollableSheet(
+                                maxChildSize: 0.6,
+                                initialChildSize: 0.4,
+                                expand: false,
+                                builder: (_, ctr) {
+                                  return Container(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 20, 10, 10),
+                                    width: Get.width,
+                                    decoration: const BoxDecoration(
+                                        color: AppColors.appWhite,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(30),
+                                            topRight: Radius.circular(30))),
+                                    child: Stack(
                                       children: [
-                                        ListTile(
-                                          contentPadding: EdgeInsets.zero,
-                                          leading: index == 0
-                                              ? CircleAvatar(
-                                                  radius: 26,
-                                                  backgroundColor:
-                                                      AppColors.appBlack,
-                                                  child: Center(
-                                                    child: Text(
-                                                      'JS',
-                                                      style: AppTextStyle
-                                                          .nineteen700White(),
-                                                    ),
-                                                  ))
-                                              : index == 1
-                                                  ? CircleAvatar(
-                                                      radius: 26,
-                                                      backgroundColor:
-                                                          AppColors.appTextGrey,
-                                                      child: SvgPicture.asset(
-                                                          fit: BoxFit.contain,
-                                                          controller
-                                                              .availableCompanies
-                                                              .elementAt(index)
-                                                              .businessLogo!))
-                                                  : controller.availableCompanies
-                                                              .elementAt(index)
-                                                              .businessLogo !=
-                                                          null
-                                                      ? CircleAvatar(
-                                                          radius: 26,
-                                                          backgroundColor:
-                                                              AppColors
-                                                                  .appBlack,
-                                                          child: Image.file(
-                                                              File(controller
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Text(
+                                                    'Switch business',
+                                                    style: AppTextStyle
+                                                        .eighteen700Black(),
+                                                  ),
+                                                  SizedBox(
+                                                    width:
+                                                        Get.width * 100 / 375,
+                                                  ),
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        Get.back();
+                                                      },
+                                                      icon: const Icon(
+                                                          Icons.close,
+                                                          color: AppColors
+                                                              .appBlack))
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                height: 16,
+                                              ),
+                                              Expanded(
+                                                child: ListView.separated(
+                                                    controller:
+                                                        ScrollController(),
+                                                    shrinkWrap: true,
+                                                    physics:
+                                                        const BouncingScrollPhysics(),
+                                                    itemCount: controller
+                                                        .availableCompanies
+                                                        .length,
+                                                    separatorBuilder:
+                                                        (context, index) {
+                                                      return const SizedBox(
+                                                        height: 12,
+                                                      );
+                                                    },
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      return Column(
+                                                        children: [
+                                                          ListTile(
+                                                            contentPadding:
+                                                                EdgeInsets.zero,
+                                                            leading: index == 0
+                                                                ? CircleAvatar(
+                                                                    radius: 26,
+                                                                    backgroundColor:
+                                                                        AppColors
+                                                                            .appBlack,
+                                                                    child:
+                                                                        Center(
+                                                                      child:
+                                                                          Text(
+                                                                        'JS',
+                                                                        style: AppTextStyle
+                                                                            .nineteen700White(),
+                                                                      ),
+                                                                    ))
+                                                                : index == 1
+                                                                    ? CircleAvatar(
+                                                                        radius:
+                                                                            26,
+                                                                        backgroundColor:
+                                                                            AppColors
+                                                                                .appTextGrey,
+                                                                        child: Image.asset(
+                                                                            fit: BoxFit
+                                                                                .contain,
+                                                                            controller.availableCompanies
+                                                                                .elementAt(
+                                                                                    index)
+                                                                                .businessLogo!))
+                                                                    : controller.availableCompanies.elementAt(index).businessLogo !=
+                                                                            null
+                                                                        ? CircleAvatar(
+                                                                            radius:
+                                                                                26,
+                                                                            backgroundColor: AppColors
+                                                                                .appBlack,
+                                                                            child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(50),
+                                                                                clipBehavior: Clip.hardEdge,
+                                                                                child: Image.file(File(controller.availableCompanies.elementAt(index).businessLogo!))))
+                                                                        : null,
+                                                            title: Text(
+                                                                controller
+                                                                    .availableCompanies
+                                                                    .elementAt(
+                                                                        index)
+                                                                    .companyName,
+                                                                style: AppTextStyle
+                                                                    .nineteen700Black()),
+                                                            subtitle: Text(
+                                                              controller
                                                                   .availableCompanies
                                                                   .elementAt(
                                                                       index)
-                                                                  .businessLogo!)))
-                                                      : null,
-                                          title: Text(
-                                              controller.availableCompanies
-                                                  .elementAt(index)
-                                                  .companyName,
-                                              style: AppTextStyle
-                                                  .nineteen700Black()),
-                                          subtitle: Text(
-                                            controller.availableCompanies
-                                                .elementAt(index)
-                                                .businessAddress,
-                                            style:
-                                                AppTextStyle.thirteen400Black(),
-                                          ),
-                                          trailing: IconButton(
-                                            onPressed: () {
-                                              controller.activeProfile.value =
-                                                  index;
-                                              controller.update();
-                                            },
-                                            icon: controller
-                                                        .activeProfile.value ==
-                                                    index
-                                                ? const Icon(Icons.check_circle,
-                                                    color: AppColors.appBlack)
-                                                : const Icon(
-                                                    Icons
-                                                        .radio_button_unchecked_outlined,
-                                                    color: AppColors.appBlack),
-                                            padding: EdgeInsets.zero,
-                                            visualDensity:
-                                                VisualDensity.compact,
+                                                                  .businessAddress,
+                                                              style: AppTextStyle
+                                                                  .thirteen400Black(),
+                                                            ),
+                                                            trailing:
+                                                                IconButton(
+                                                              onPressed: () {
+                                                                controller
+                                                                    .activeProfile
+                                                                    .value = index;
+                                                                controller
+                                                                    .update();
+                                                              },
+                                                              icon: controller
+                                                                          .activeProfile
+                                                                          .value ==
+                                                                      index
+                                                                  ? const Icon(
+                                                                      Icons
+                                                                          .check_circle,
+                                                                      color: AppColors
+                                                                          .appBlack)
+                                                                  : const Icon(
+                                                                      Icons
+                                                                          .radio_button_unchecked_outlined,
+                                                                      color: AppColors
+                                                                          .appBlack),
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              visualDensity:
+                                                                  VisualDensity
+                                                                      .compact,
+                                                            ),
+                                                          ),
+                                                          const Divider(
+                                                            color: AppColors
+                                                                .appDividerGrey,
+                                                            height: 0,
+                                                            indent: 4,
+                                                            endIndent: 4,
+                                                          )
+                                                        ],
+                                                      );
+                                                    }),
+                                              ),
+                                              const SizedBox(
+                                                height: 40,
+                                              )
+                                            ],
                                           ),
                                         ),
-                                        const Divider(
-                                          color: AppColors.appDividerGrey,
-                                          height: 0,
-                                          indent: 4,
-                                          endIndent: 4,
-                                        )
+                                        Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: ListTile(
+                                            onTap: () {
+                                              Get.toNamed(Routes.BUSINESSINFO);
+                                            },
+                                            tileColor: AppColors.appWhite,
+                                            contentPadding:
+                                                const EdgeInsets.symmetric(
+                                                    vertical: 10),
+                                            leading: CircleAvatar(
+                                                radius: 22,
+                                                backgroundColor:
+                                                    AppColors.appBlack,
+                                                child: Center(
+                                                  child: Text(
+                                                    '+',
+                                                    style: AppTextStyle
+                                                        .nineteen700White(),
+                                                  ),
+                                                )),
+                                            title: Text('Add Account',
+                                                style: AppTextStyle
+                                                    .nineteen700Black()),
+                                          ),
+                                        ),
                                       ],
-                                    );
-                                  }),
-                              const SizedBox(
-                                height: 40,
-                              )
-                            ],
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: ListTile(
-                              onTap: () {
-                                Get.toNamed(Routes.BUSINESSINFO);
-                              },
-                              contentPadding: EdgeInsets.zero,
-                              leading: CircleAvatar(
-                                  radius: 26,
-                                  backgroundColor: AppColors.appBlack,
-                                  child: Center(
-                                    child: Text(
-                                      '+',
-                                      style: AppTextStyle.nineteen700White(),
                                     ),
-                                  )),
-                              title: Text('Add Account',
-                                  style: AppTextStyle.nineteen700Black()),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                      backgroundColor: AppColors.appBlack.withOpacity(0.56),
-                      elevation: 0,
-                      isScrollControlled: true);
-                },
-                padding: EdgeInsets.zero,
-                visualDensity: VisualDensity.compact,
-                icon: const Icon(CupertinoIcons.chevron_down,
-                    size: 24, color: AppColors.appWhite),
-              ),
-            ),
+                                  );
+                                });
+                          });
+                        });
+                    // Get.bottomSheet(
+                    //     GetBuilder<HomeController>(builder: (controller) {
+                    //   return  }),
+                    //     backgroundColor: AppColors.appBlack.withOpacity(0.56),
+                    //     elevation: 0,
+                    //     isScrollControlled: true,);
+                  },
+                  padding: EdgeInsets.zero,
+                  visualDensity: VisualDensity.compact,
+                  icon: const Icon(CupertinoIcons.chevron_down,
+                      size: 24, color: AppColors.appWhite),
+                ),
+              );
+            }),
             ...List.generate(
                 controller.menuList.length,
                 (index) => Column(
