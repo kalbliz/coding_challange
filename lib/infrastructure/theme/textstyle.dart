@@ -9,6 +9,12 @@ class AppTextStyle {
         fontWeight: FontWeight.w700,
         color: AppColors.appTextBlack);
   }
+  static TextStyle eighteen600Black() {
+    return GoogleFonts.figtree(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: AppColors.appTextBlack);
+  }
 
   static TextStyle nineteen700Black() {
     return GoogleFonts.figtree(
@@ -64,6 +70,21 @@ class AppTextStyle {
       fontSize: 13,
       fontWeight: FontWeight.w400,
       color: AppColors.appBlack,
+    );
+
+  }
+  static TextStyle ten400Black() {
+    return GoogleFonts.figtree(
+      fontSize: 10,
+      fontWeight: FontWeight.w400,
+      color: AppColors.appBlack,
+    );
+  }
+    static TextStyle hintText() {
+    return GoogleFonts.figtree(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: const Color.fromRGBO(166, 166, 166, 1),
     );
   }
 }

@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:coding_challange/infrastructure/theme/app_colors.dart';
+import 'package:coding_challange/infrastructure/theme/textstyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -95,45 +97,42 @@ class AppAuthInput extends StatelessWidget {
             style: TextStyle(
                 color: labelTextColor,
                 fontWeight: FontWeight.w300,
-                fontSize: 16),
-            cursorColor: styleColor,
+                fontSize: 14),
+            cursorColor: AppColors.appBlack,
             obscureText: obscureText,
             maxLines: maxLines,
             onChanged: onChanged,
             onEditingComplete: onEditingComplete,
             textCapitalization: textCapitalization ?? TextCapitalization.none,
+            cursorOpacityAnimates: true,
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(25, 16, 10, 16),
               suffixText: suffixText,
               hintText: hintText,
               prefixIcon: prefix,
-              fillColor: const Color.fromARGB(255, 248, 247, 247),
+              fillColor: const Color.fromRGBO(245, 245, 245, 1),
               filled: true,
-              hintStyle: const TextStyle(
-                color: Color(0x3325131A),
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-              ),
+              hintStyle: AppTextStyle.hintText(),
               isDense: true,
               errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(20),
                 borderSide: const BorderSide(color: Colors.red, width: 0.5),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(20),
                 borderSide: const BorderSide(color: Colors.red, width: 0.5),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide(color: enabledBorder, width: 0.5),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide:
-                    const BorderSide(color: Color(0xFF1493A4), width: 0.5),
+                borderRadius: BorderRadius.circular(20),
+                borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 31, 32, 32), width: 0.5),
               ),
               disabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide(color: borderColor, width: 0.5),
               ),
               // contentPadding: EdgeInsets.only(top: 10, bottom: 10),
