@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:coding_challange/infrastructure/navigation/routes.dart';
 import 'package:coding_challange/infrastructure/helpers/textfield_validator.dart';
 import 'package:coding_challange/presentation/home/controllers/home.controller.dart';
@@ -25,19 +27,19 @@ class SignUpController extends GetxController {
   ]);
   final businessPhoneNumberValidator =
       RequiredValidator(errorText: 'Field is required');
-        final businessAmountNumberValidator =
+  final businessAmountNumberValidator =
       RequiredValidator(errorText: 'Field is required');
-        final businessCategoryNumberValidator =
+  final businessCategoryNumberValidator =
       RequiredValidator(errorText: 'Field is required');
   final businessAddressValidator =
       RequiredValidator(errorText: 'Field is required');
   RxBool isButtonActive = false.obs;
-    RxBool isBrandButtonActive = false.obs;
+  RxBool isBrandButtonActive = false.obs;
   RxInt activePage = 0.obs;
-  final GlobalKey<FormState> businessInfoFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> businessBrandFormKey = GlobalKey<FormState>();
- String imagePath = '';
-  addBusiness() {
+  GlobalKey<FormState> businessInfoFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> businessBrandFormKey = GlobalKey<FormState>();
+  String imagePath = '';
+  addBusiness() async {
     Get.find<HomeController>().availableCompanies.add(CompanyProfileModel(
         companyName: businessNameController.value.text,
         businessEmail: businessEmailController.value.text,
@@ -47,6 +49,20 @@ class SignUpController extends GetxController {
         businessAmount: businessAmountController.value.text,
         businessCategory: businessCategoryController.value.text));
     Get.find<HomeController>().update();
-    Get.offAndToNamed(Routes.HOME);
+    Get.off(() => const HomeScreen());
+  }
+
+  @override
+  void dispose() {
+    businessNameController.dispose();
+    businessEmailController.dispose();
+    businessPhoneNumberController.dispose();
+    businessAddressController.dispose();
+    businessLogoController.dispose();
+    businessCategoryController.dispose();
+    businessAmountController.dispose();
+    businessInfoFormKey.currentState!.dispose();
+    businessBrandFormKey.currentState!.dispose();
+    super.dispose();
   }
 }

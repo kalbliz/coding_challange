@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
+import 'package:coding_challange/infrastructure/navigation/bindings/controllers/signup.controller.binding.dart';
+import 'package:coding_challange/presentation/screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:coding_challange/infrastructure/navigation/routes.dart';
@@ -62,7 +63,7 @@ class HomeScreen extends GetView<HomeController> {
                     : controller.activeProfile.value == 1
                         ? CircleAvatar(
                             radius: 26,
-                            backgroundColor: AppColors.appTextGrey,
+                            backgroundColor: AppColors.appWhite,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(50),
                               child: Image.asset(
@@ -190,7 +191,7 @@ class HomeScreen extends GetView<HomeController> {
                                                                             26,
                                                                         backgroundColor:
                                                                             AppColors
-                                                                                .appTextGrey,
+                                                                                .appWhite,
                                                                         child: Image.asset(
                                                                             fit: BoxFit
                                                                                 .contain,
@@ -279,7 +280,12 @@ class HomeScreen extends GetView<HomeController> {
                                           alignment: Alignment.bottomCenter,
                                           child: ListTile(
                                             onTap: () {
-                                              Get.toNamed(Routes.BUSINESSINFO);
+                                              Get.to(
+                                                  () =>
+                                                      const BusinessInformationScreen(),
+                                                  binding:
+                                                      SignUpControllerBinding());
+                                              //  Get.toNamed(Routes.BUSINESSINFO);
                                             },
                                             tileColor: AppColors.appWhite,
                                             contentPadding:
