@@ -5,5 +5,6 @@ class Routes {
   }
 
   static const HOME = '/home';
-   static const SIGNUP = '/signup';
+   static const BUSINESSINFO = '/business-info';
+    static const BUSINESSBRAND = '/business-brand';
 }

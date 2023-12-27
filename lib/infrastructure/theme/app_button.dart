@@ -26,14 +26,14 @@ class _AppAuthButtonState extends State<AppAuthButton> {
       height: 35,
       width: MediaQuery.sizeOf(context).width * 207 / 375,
       decoration: BoxDecoration(
+        color: widget.isActive ? AppColors.appBlack : AppColors.appDividerGrey,
         borderRadius: BorderRadius.circular(20),
       ),
       child: ElevatedButton(
           onPressed: widget.onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.appBlack,
-            shadowColor:
-                widget.isActive ? AppColors.appBlack : Colors.transparent,
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             // padding: const EdgeInsets.symmetric(vertical: 10)

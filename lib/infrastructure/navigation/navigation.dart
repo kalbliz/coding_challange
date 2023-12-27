@@ -31,9 +31,14 @@ class Nav {
       page: () => const HomeScreen(),
       binding: HomeControllerBinding(),
     ),
-       GetPage(
-      name: Routes.SIGNUP,
-      page: () => const SignUpScreen(),
+    GetPage(
+      name: Routes.BUSINESSINFO,
+      page: () => const BusinessInformationScreen(),
+      binding: SignUpControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.BUSINESSBRAND,
+      page: () => const BusinessBrandScreen(),
       binding: SignUpControllerBinding(),
     ),
   ];

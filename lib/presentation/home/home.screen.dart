@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:coding_challange/infrastructure/navigation/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -149,7 +150,7 @@ class HomeScreen extends GetView<HomeController> {
                               alignment: Alignment.bottomCenter,
                               child: ListTile(
                                 onTap: () {
-                                  Get.toNamed('signup');
+                                  Get.toNamed(Routes.BUSINESSINFO);
                                 },
                                 contentPadding: EdgeInsets.zero,
                                 leading: CircleAvatar(
