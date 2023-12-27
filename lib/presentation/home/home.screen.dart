@@ -148,6 +148,9 @@ class HomeScreen extends GetView<HomeController> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: ListTile(
+                                onTap: () {
+                                  Get.toNamed('signup');
+                                },
                                 contentPadding: EdgeInsets.zero,
                                 leading: CircleAvatar(
                                     radius: 26,
