@@ -1,6 +1,7 @@
 import 'package:coding_challange/infrastructure/theme/app_assets.dart';
 import 'package:coding_challange/infrastructure/theme/app_button.dart';
 import 'package:coding_challange/infrastructure/theme/app_colors.dart';
+import 'package:coding_challange/infrastructure/theme/app_utils.dart';
 import 'package:coding_challange/infrastructure/theme/textfield.dart';
 import 'package:coding_challange/infrastructure/theme/textstyle.dart';
 import 'package:coding_challange/presentation/signup/controllers/signup.controller.dart';
@@ -93,18 +94,27 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                       },
                       child: Column(
                         children: [
-                          AppAuthInput(
-                            hintText: 'Upload your logo',
-                            controller: controller.businessLogoController,
-                            validator: controller.businessNameValidator,
-                            keyboard: KeyboardType.text,
-                            suffix: Padding(
-                              padding: const EdgeInsets.only(right: 22),
-                              child: SvgPicture.asset(
-                                AppAssets.cloudIcon,
-                                height: 24,
-                                width: 24,
-                                fit: BoxFit.contain,
+                          GestureDetector(
+                            onTap: () {
+                              AppUtils.getImage().then((value) {
+                                controller.imagePath = value;
+                                controller.businessLogoController.value = value;
+                              });
+                            },
+                            child: AppAuthInput(
+                              hintText: 'Upload your logo',
+                              readOnly: true,
+                              controller: controller.businessLogoController,
+                              validator: controller.businessNameValidator,
+                              keyboard: KeyboardType.text,
+                              suffix: Padding(
+                                padding: const EdgeInsets.only(right: 22),
+                                child: SvgPicture.asset(
+                                  AppAssets.cloudIcon,
+                                  height: 24,
+                                  width: 24,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
                           ),
@@ -161,7 +171,9 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                     isActive: controller.isButtonActive.value,
                     buttonText: 'Create Your Invoice',
                     textColor: AppColors.appWhite,
-                    onPressed: (){},
+                    onPressed: () {
+                      controller.addBusiness();
+                    },
                   );
                 }),
               ),

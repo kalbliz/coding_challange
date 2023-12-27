@@ -123,12 +123,13 @@ class HomeScreen extends GetView<HomeController> {
                                                           .nineteen700White(),
                                                     ),
                                                   ))
-                                              : index == 2
+                                              : index == 1
                                                   ? CircleAvatar(
                                                       radius: 26,
                                                       backgroundColor:
-                                                          AppColors.appBlack,
+                                                          AppColors.appTextGrey,
                                                       child: SvgPicture.asset(
+                                                          fit: BoxFit.contain,
                                                           controller
                                                               .availableCompanies
                                                               .elementAt(index)

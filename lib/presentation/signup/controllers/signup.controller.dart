@@ -31,7 +31,7 @@ class SignUpController extends GetxController {
   RxInt activePage = 0.obs;
   final GlobalKey<FormState> businessInfoFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> businessBrandFormKey = GlobalKey<FormState>();
-
+ String imagePath = '';
   addBusiness() {
     Get.find<HomeController>().availableCompanies.add(CompanyProfileModel(
         companyName: businessNameController.value.text,
