@@ -26,6 +26,19 @@ class HomeController extends GetxController {
         subTitle: 'Invoice no., Quantity label, Invoice title...'),
     MenuModel(title: 'Export', subTitle: ''),
   ];
+
+  final List<CompanyProfileModel> availableCompanies = [
+    CompanyProfileModel(
+        companyName: 'James & Sons',
+        businessEmail: 'example@gmail.com',
+        businessPhoneNumber: '08133993323',
+        businessAddress: 'No. 2 Ikeja Street, off Allen Avenue....'),
+    CompanyProfileModel(
+        companyName: 'James & Sons',
+        businessEmail: 'example@gmail.com',
+        businessPhoneNumber: '08133993323',
+        businessAddress: 'No. 7 Victoria island, off Ikoyi....')
+  ];
   @override
   void onInit() {
     super.onInit();

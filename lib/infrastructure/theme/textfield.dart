@@ -106,10 +106,13 @@ class AppAuthInput extends StatelessWidget {
             textCapitalization: textCapitalization ?? TextCapitalization.none,
             cursorOpacityAnimates: true,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.fromLTRB(25, 16, 10, 16),
+              contentPadding: const EdgeInsets.fromLTRB(25, 16, 25, 16),
               suffixText: suffixText,
+              suffixIconConstraints:
+                  const BoxConstraints(minHeight: 24, minWidth: 24),
               hintText: hintText,
               prefixIcon: prefix,
+              
               fillColor: const Color.fromRGBO(245, 245, 245, 1),
               filled: true,
               hintStyle: AppTextStyle.hintText(),

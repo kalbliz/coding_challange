@@ -26,7 +26,7 @@ class BusinessBrandScreen extends GetView<SignUpController> {
               height: 3,
               width: 30,
               decoration: BoxDecoration(
-                  color: AppColors.appBlack,
+                  color: AppColors.appDividerGrey,
                   borderRadius: BorderRadius.circular(8)),
             ),
             const SizedBox(
@@ -36,7 +36,7 @@ class BusinessBrandScreen extends GetView<SignUpController> {
               height: 3,
               width: 30,
               decoration: BoxDecoration(
-                  color: AppColors.appDividerGrey,
+                  color: AppColors.appBlack,
                   borderRadius: BorderRadius.circular(8)),
             ),
           ],
@@ -52,7 +52,7 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                 children: [
                   Center(
                     child: SvgPicture.asset(
-                      AppAssets.recieptIcon,
+                      AppAssets.editIcon,
                       height: 100,
                       width: 100,
                       fit: BoxFit.contain,
@@ -62,14 +62,15 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                     height: 16,
                   ),
                   Text(
-                    'Business Information.',
+                    'Business Branding.',
                     style: AppTextStyle.eighteen600Black(),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    'Create your business profile.',
+                    'Manage your business’s \nbranding',
+                    textAlign: TextAlign.center,
                     style: AppTextStyle.thirteen400Black(),
                   ),
                   const SizedBox(
@@ -85,48 +86,63 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                   Form(
                       key: controller.businessBrandFormKey,
                       onChanged: () {
-                        controller.isButtonActive.value =
-                            controller.businessBrandFormKey.currentState!.validate();
+                        controller.isButtonActive.value = controller
+                            .businessBrandFormKey.currentState!
+                            .validate();
                         controller.update();
                       },
                       child: Column(
                         children: [
                           AppAuthInput(
-                            hintText: 'Business name',
-                            controller: controller.businessNameController,
+                            hintText: 'Upload your logo',
+                            controller: controller.businessLogoController,
                             validator: controller.businessNameValidator,
                             keyboard: KeyboardType.text,
+                            suffix: Padding(
+                              padding: const EdgeInsets.only(right: 22),
+                              child: SvgPicture.asset(
+                                AppAssets.cloudIcon,
+                                height: 24,
+                                width: 24,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           AppAuthInput(
-                            hintText: 'Business email address',
-                            controller: controller.businessEmailController,
+                            hintText: 'Business Category',
+                            controller: controller.businessCategoryController,
                             validator: controller.businessEmailValidator,
-                            keyboard: KeyboardType.email,
+                            keyboard: KeyboardType.text,
+                            suffix: Padding(
+                              padding: const EdgeInsets.only(right: 22),
+                              child: SvgPicture.asset(
+                                AppAssets.categoryIcon,
+                                height: 24,
+                                width: 24,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           AppAuthInput(
-                              hintText: 'Business phone number',
-                              controller:
-                                  controller.businessPhoneNumberController,
-                              validator:
-                                  controller.businessPhoneNumberValidator,
-                              keyboard: KeyboardType.phone,
-                              inputFormatters: [
-                                LengthLimitingTextInputFormatter(11),
-                              ]),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          AppAuthInput(
-                            hintText: 'Business address',
-                            controller: controller.businessAddressController,
-                            validator: controller.businessAddressValidator,
-                            keyboard: KeyboardType.email,
+                            hintText: ' NGN - Nigerian Naira (₦)',
+                            controller: controller.businessAmountController,
+                            validator: controller.businessPhoneNumberValidator,
+                            keyboard: KeyboardType.number,
+                            suffix: Padding(
+                              padding: const EdgeInsets.only(right: 22),
+                              child: SvgPicture.asset(
+                                AppAssets.moneyIcon,
+                                height: 24,
+                                width: 24,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
                           ),
                           const SizedBox(
                             height: 100,
@@ -143,7 +159,7 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                 child: GetBuilder<SignUpController>(builder: (controller) {
                   return AppAuthButton(
                     isActive: controller.isButtonActive.value,
-                    buttonText: 'Next',
+                    buttonText: 'Create Your Invoice',
                     textColor: AppColors.appWhite,
                   );
                 }),

@@ -9,6 +9,11 @@ class SignUpController extends GetxController {
       TextEditingController();
   final TextEditingController businessAddressController =
       TextEditingController();
+  final TextEditingController businessLogoController = TextEditingController();
+  final TextEditingController businessCategoryController =
+      TextEditingController();
+  final TextEditingController businessAmountController =
+      TextEditingController();
   final businessNameValidator =
       RequiredValidator(errorText: 'Field is required');
   final businessEmailValidator = MultiValidator([
@@ -22,5 +27,5 @@ class SignUpController extends GetxController {
   RxBool isButtonActive = false.obs;
   RxInt activePage = 0.obs;
   final GlobalKey<FormState> businessInfoFormKey = GlobalKey<FormState>();
-    final GlobalKey<FormState> businessBrandFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> businessBrandFormKey = GlobalKey<FormState>();
 }

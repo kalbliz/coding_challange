@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:coding_challange/infrastructure/navigation/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:coding_challange/infrastructure/navigation/routes.dart';
 import 'package:coding_challange/infrastructure/theme/app_colors.dart';
 import 'package:coding_challange/infrastructure/theme/textstyle.dart';
 
@@ -281,5 +281,24 @@ class MenuModel {
     required this.title,
     required this.subTitle,
     this.onTap,
+  });
+}
+
+class CompanyProfileModel {
+  final String companyName;
+  final String businessEmail;
+  final String businessPhoneNumber;
+  final String businessAddress;
+  final String? businessLogo;
+  final String? businessCategory;
+  final String? businessAmount;
+  CompanyProfileModel({
+    required this.companyName,
+    required this.businessEmail,
+    required this.businessPhoneNumber,
+    required this.businessAddress,
+    this.businessLogo,
+    this.businessCategory,
+    this.businessAmount,
   });
 }
