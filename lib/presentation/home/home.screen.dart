@@ -101,7 +101,7 @@ class HomeScreen extends GetView<HomeController> {
                                 builder: (_, ctr) {
                                   return Container(
                                     padding: const EdgeInsets.fromLTRB(
-                                        10, 20, 10, 10),
+                                        10, 15, 10, 10),
                                     width: Get.width,
                                     decoration: const BoxDecoration(
                                         color: AppColors.appWhite,
@@ -110,181 +110,176 @@ class HomeScreen extends GetView<HomeController> {
                                             topRight: Radius.circular(30))),
                                     child: Stack(
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 8.0),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Text(
-                                                    'Switch business',
-                                                    style: AppTextStyle
-                                                        .eighteen700Black(),
-                                                  ),
-                                                  SizedBox(
-                                                    width:
-                                                        Get.width * 100 / 375,
-                                                  ),
-                                                  IconButton(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      icon: const Icon(
-                                                          Icons.close,
-                                                          color: AppColors
-                                                              .appBlack))
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 16,
-                                              ),
-                                              Expanded(
-                                                child: ListView.separated(
-                                                    controller:
-                                                        ScrollController(),
-                                                    shrinkWrap: true,
-                                                    physics:
-                                                        const BouncingScrollPhysics(),
-                                                    itemCount: controller
-                                                        .availableCompanies
-                                                        .length,
-                                                    separatorBuilder:
-                                                        (context, index) {
-                                                      return const SizedBox(
-                                                        height: 12,
-                                                      );
+                                        Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  'Switch business',
+                                                  style: AppTextStyle
+                                                      .eighteen700Black(),
+                                                ),
+                                                SizedBox(
+                                                  width: Get.width * 100 / 375,
+                                                ),
+                                                IconButton(
+                                                    onPressed: () {
+                                                      Get.back();
                                                     },
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return Column(
-                                                        children: [
-                                                          ListTile(
-                                                            contentPadding:
-                                                                EdgeInsets.zero,
-                                                            leading: index == 0
-                                                                ? CircleAvatar(
-                                                                    radius: 26,
-                                                                    backgroundColor:
-                                                                        AppColors
-                                                                            .appBlack,
-                                                                    child:
-                                                                        Center(
-                                                                      child:
-                                                                          Text(
-                                                                        'JS',
-                                                                        style: AppTextStyle
-                                                                            .nineteen700White(),
-                                                                      ),
-                                                                    ))
-                                                                : index == 1
-                                                                    ? CircleAvatar(
-                                                                        radius:
-                                                                            26,
-                                                                        backgroundColor:
-                                                                            AppColors
-                                                                                .appWhite,
-                                                                        child: Image.asset(
-                                                                            fit: BoxFit
-                                                                                .contain,
-                                                                            controller.availableCompanies
-                                                                                .elementAt(
-                                                                                    index)
-                                                                                .businessLogo!))
-                                                                    : controller.availableCompanies.elementAt(index).businessLogo !=
-                                                                            null
-                                                                        ? CircleAvatar(
-                                                                            radius:
-                                                                                26,
-                                                                            backgroundColor: AppColors
-                                                                                .appBlack,
-                                                                            child: ClipRRect(
-                                                                                borderRadius: BorderRadius.circular(50),
-                                                                                clipBehavior: Clip.hardEdge,
-                                                                                child: Image.file(File(controller.availableCompanies.elementAt(index).businessLogo!))))
-                                                                        : null,
-                                                            title: Text(
-                                                                controller
-                                                                    .availableCompanies
-                                                                    .elementAt(
-                                                                        index)
-                                                                    .companyName,
-                                                                style: AppTextStyle
-                                                                    .nineteen700Black()),
-                                                            subtitle: Text(
+                                                    icon: const Icon(
+                                                        Icons.close,
+                                                        color:
+                                                            AppColors.appBlack))
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 16,
+                                            ),
+                                            Expanded(
+                                              child: ListView.separated(
+                                                  controller:
+                                                      ScrollController(),
+                                                  shrinkWrap: true,
+                                                  physics:
+                                                      const BouncingScrollPhysics(),
+                                                  itemCount: controller
+                                                      .availableCompanies
+                                                      .length,
+                                                  separatorBuilder:
+                                                      (context, index) {
+                                                    return const SizedBox(
+                                                      height: 12,
+                                                    );
+                                                  },
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Column(
+                                                      children: [
+                                                        ListTile(
+                                                          contentPadding:
+                                                              EdgeInsets.zero,
+                                                          leading: index == 0
+                                                              ? CircleAvatar(
+                                                                  radius: 26,
+                                                                  backgroundColor:
+                                                                      AppColors
+                                                                          .appBlack,
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      'JS',
+                                                                      style: AppTextStyle
+                                                                          .nineteen700White(),
+                                                                    ),
+                                                                  ))
+                                                              : index == 1
+                                                                  ? CircleAvatar(
+                                                                      radius:
+                                                                          26,
+                                                                      backgroundColor:
+                                                                          AppColors
+                                                                              .appWhite,
+                                                                      child: Image.asset(
+                                                                          fit: BoxFit
+                                                                              .contain,
+                                                                          controller
+                                                                              .availableCompanies
+                                                                              .elementAt(
+                                                                                  index)
+                                                                              .businessLogo!))
+                                                                  : controller
+                                                                              .availableCompanies
+                                                                              .elementAt(
+                                                                                  index)
+                                                                              .businessLogo !=
+                                                                          null
+                                                                      ? CircleAvatar(
+                                                                          radius:
+                                                                              26,
+                                                                          backgroundColor: AppColors
+                                                                              .appBlack,
+                                                                          child: ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(50),
+                                                                              clipBehavior: Clip.hardEdge,
+                                                                              child: Image.file(File(controller.availableCompanies.elementAt(index).businessLogo!))))
+                                                                      : null,
+                                                          title: Text(
                                                               controller
                                                                   .availableCompanies
                                                                   .elementAt(
                                                                       index)
-                                                                  .businessAddress,
+                                                                  .companyName,
                                                               style: AppTextStyle
-                                                                  .thirteen400Black(),
-                                                            ),
-                                                            trailing:
-                                                                IconButton(
-                                                              onPressed: () {
-                                                                controller
-                                                                    .activeProfile
-                                                                    .value = index;
-                                                                controller
-                                                                    .update();
-                                                              },
-                                                              icon: controller
-                                                                          .activeProfile
-                                                                          .value ==
-                                                                      index
-                                                                  ? const Icon(
-                                                                      Icons
-                                                                          .check_circle,
-                                                                      color: AppColors
-                                                                          .appBlack)
-                                                                  : const Icon(
-                                                                      Icons
-                                                                          .radio_button_unchecked_outlined,
-                                                                      color: AppColors
-                                                                          .appBlack),
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              visualDensity:
-                                                                  VisualDensity
-                                                                      .compact,
-                                                            ),
+                                                                  .nineteen700Black()),
+                                                          subtitle: Text(
+                                                            controller
+                                                                .availableCompanies
+                                                                .elementAt(
+                                                                    index)
+                                                                .businessAddress,
+                                                            style: AppTextStyle
+                                                                .thirteen400Black(),
                                                           ),
-                                                          const Divider(
-                                                            color: AppColors
-                                                                .appDividerGrey,
-                                                            height: 0,
-                                                            indent: 4,
-                                                            endIndent: 4,
-                                                          )
-                                                        ],
-                                                      );
-                                                    }),
-                                              ),
-                                              const SizedBox(
-                                                height: 40,
-                                              )
-                                            ],
-                                          ),
+                                                          trailing: IconButton(
+                                                            onPressed: () {
+                                                              controller
+                                                                  .activeProfile
+                                                                  .value = index;
+                                                              controller
+                                                                  .update();
+                                                            },
+                                                            icon: controller
+                                                                        .activeProfile
+                                                                        .value ==
+                                                                    index
+                                                                ? const Icon(
+                                                                    Icons
+                                                                        .check_circle,
+                                                                    color: AppColors
+                                                                        .appBlack)
+                                                                : const Icon(
+                                                                    Icons
+                                                                        .radio_button_unchecked_outlined,
+                                                                    color: AppColors
+                                                                        .appBlack),
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                            visualDensity:
+                                                                VisualDensity
+                                                                    .compact,
+                                                          ),
+                                                        ),
+                                                        const Divider(
+                                                          color: AppColors
+                                                              .appDividerGrey,
+                                                          height: 0,
+                                                          indent: 4,
+                                                          endIndent: 4,
+                                                        ),
+                                                      ],
+                                                    );
+                                                  }),
+                                            ),
+                                            const SizedBox(
+                                              height: 60,
+                                            )
+                                          ],
                                         ),
                                         Align(
                                           alignment: Alignment.bottomCenter,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(top:10),
+                                          child: Container(
+                                            height: 50,
+                                            color: AppColors.appWhite,
                                             child: ListTile(
                                               onTap: () {
-                                              
-                                                  Get.toNamed(Routes.BUSINESSINFO);
+                                                Get.toNamed(
+                                                    Routes.BUSINESSINFO);
                                               },
+                                              contentPadding: EdgeInsets.zero,
                                               tileColor: AppColors.appWhite,
-                                              contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 5),
                                               leading: CircleAvatar(
-                                                  radius: 22,
+                                                  radius: 26,
                                                   backgroundColor:
                                                       AppColors.appBlack,
                                                   child: Center(
@@ -306,12 +301,6 @@ class HomeScreen extends GetView<HomeController> {
                                 });
                           });
                         });
-                    // Get.bottomSheet(
-                    //     GetBuilder<HomeController>(builder: (controller) {
-                    //   return  }),
-                    //     backgroundColor: AppColors.appBlack.withOpacity(0.56),
-                    //     elevation: 0,
-                    //     isScrollControlled: true,);
                   },
                   padding: EdgeInsets.zero,
                   visualDensity: VisualDensity.compact,
