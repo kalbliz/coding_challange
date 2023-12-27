@@ -1,10 +1,11 @@
+import 'package:coding_challange/infrastructure/theme/app_assets.dart';
 import 'package:coding_challange/presentation/home/home.screen.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
-  final count = 0.obs;
+  final activeProfile = 0.obs;
   final List<MenuModel> menuList = [
     MenuModel(
         title: 'Business details',
@@ -37,7 +38,8 @@ class HomeController extends GetxController {
         companyName: 'James & Sons',
         businessEmail: 'example@gmail.com',
         businessPhoneNumber: '08133993323',
-        businessAddress: 'No. 7 Victoria island, off Ikoyi....')
+        businessAddress: 'No. 7 Victoria island, off Ikoyi....',
+        businessLogo: AppAssets.businessOneIcon)
   ];
   @override
   void onInit() {
@@ -53,6 +55,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

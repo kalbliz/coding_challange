@@ -161,6 +161,7 @@ class BusinessBrandScreen extends GetView<SignUpController> {
                     isActive: controller.isButtonActive.value,
                     buttonText: 'Create Your Invoice',
                     textColor: AppColors.appWhite,
+                    onPressed: (){},
                   );
                 }),
               ),

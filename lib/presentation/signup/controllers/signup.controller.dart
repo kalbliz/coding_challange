@@ -1,4 +1,7 @@
+import 'package:coding_challange/infrastructure/navigation/routes.dart';
 import 'package:coding_challange/infrastructure/theme/textfield_validator.dart';
+import 'package:coding_challange/presentation/home/controllers/home.controller.dart';
+import 'package:coding_challange/presentation/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,4 +31,17 @@ class SignUpController extends GetxController {
   RxInt activePage = 0.obs;
   final GlobalKey<FormState> businessInfoFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> businessBrandFormKey = GlobalKey<FormState>();
+
+  addBusiness() {
+    Get.find<HomeController>().availableCompanies.add(CompanyProfileModel(
+        companyName: businessNameController.value.text,
+        businessEmail: businessEmailController.value.text,
+        businessPhoneNumber: businessPhoneNumberController.value.text,
+        businessAddress: businessAddressController.value.text,
+        businessLogo: businessLogoController.value.text,
+        businessAmount: businessAmountController.value.text,
+        businessCategory: businessCategoryController.value.text));
+    Get.find<HomeController>().update();
+    Get.offAndToNamed(Routes.HOME);
+  }
 }
