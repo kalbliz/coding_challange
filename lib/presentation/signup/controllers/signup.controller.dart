@@ -2,7 +2,7 @@
 
 import 'package:coding_challange/infrastructure/helpers/textfield_validator.dart';
 import 'package:coding_challange/presentation/home/controllers/home.controller.dart';
-import 'package:coding_challange/presentation/screens.dart';
+import 'package:coding_challange/presentation/shared/models/company.profile.model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,6 +47,7 @@ class SignUpController extends GetxController {
         businessLogo: businessLogoController.value.text,
         businessAmount: businessAmountController.value.text,
         businessCategory: businessCategoryController.value.text));
+        Get.find<HomeController>().activeProfile;
     Get.find<HomeController>().update();
     for (int i = 3; i > 0; i--) {
       Get.back();

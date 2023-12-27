@@ -1,5 +1,6 @@
 import 'package:coding_challange/infrastructure/helpers/app_assets.dart';
-import 'package:coding_challange/presentation/home/home.screen.dart';
+import 'package:coding_challange/presentation/shared/models/company.profile.model.dart';
+import 'package:coding_challange/presentation/shared/models/menu.model.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {

@@ -402,33 +402,3 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 }
-
-class MenuModel {
-  final String title;
-  final String subTitle;
-  void Function()? onTap;
-  MenuModel({
-    required this.title,
-    required this.subTitle,
-    this.onTap,
-  });
-}
-
-class CompanyProfileModel {
-  final String companyName;
-  final String businessEmail;
-  final String businessPhoneNumber;
-  final String businessAddress;
-  final String? businessLogo;
-  final String? businessCategory;
-  final String? businessAmount;
-  CompanyProfileModel({
-    required this.companyName,
-    required this.businessEmail,
-    required this.businessPhoneNumber,
-    required this.businessAddress,
-    this.businessLogo,
-    this.businessCategory,
-    this.businessAmount,
-  });
-}
